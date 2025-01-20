@@ -17,3 +17,6 @@ git clone "[200~"https://github.com/CodeWithTanveer/portfolio-website-code-with
 
 
 
+cd "E:\data"
+git clone "https://github.com/CodeWithTanveer/portfolio-website-code-with-tanveer.git"
+ls
