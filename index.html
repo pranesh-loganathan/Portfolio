@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pranesh Loganathan | Portfolio</title>
+    <meta name="description" content="Welcome to Pranesh's Portfolio. Full-Stack Web Developer and Software Engineering student at VIT">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="assets/images/favicon.jpg" type="image/x-png">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --text-color: #333;
+            --background-color: #f4f4f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .hero {
+            background-color: var(--secondary-color);
+            color: #fff;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .social-icons {
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .about, .skills, .education, .projects {
+            padding: 4rem 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-content, .skills-container, .education-container, .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 2rem;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .personal-info {
+            margin: 1rem 0;
+        }
+
+        .personal-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-item, .education-item, .project-item {
+            text-align: center;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 1rem;
+            width: 300px;
+        }
+
+        .skill-item img, .education-item img, .project-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item img, .project-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 1rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-links {
+            margin-top: 1rem;
+        }
+
+        .project-links .btn {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            margin-right: 0.5rem;
+        }
+
+        .footer {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 2rem 1rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            flex: 1;
+            margin-bottom: 1rem;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .scroll-top-btn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+                cursor: pointer;
+            }
+
+            .menu-toggle .bar {
+                display: block;
+                width: 25px;
+                height: 3px;
+                background-color: var(--text-color);
+                margin: 5px auto;
+                transition: all 0.3s ease-in-out;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 5rem;
+                flex-direction: column;
+                background-color: #fff;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 2.5rem 0;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-image {
+                margin-right: 0;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="/" class="logo"><i class="fa-solid fa-code"></i> Portfolio</a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Hi There, I'm Pranesh Loganathan</h1>
+                <p>I am into <span id="typing-text"></span></p>
+                <a href="#about" class="btn">About Me <i class="fas fa-arrow-circle-down"></i></a>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/pranesh-loganathan/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/pranesh-loganathan" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2 class="section-title"><i class="fas fa-user-alt"></i> About <span>Me</span></h2>
+            <div class="about-content">
+                <img src="assets/images/favicon.jpg" alt="Pranesh Loganathan" class="profile-image">
+                <div class="about-text">
+                    <h3>I am Pranesh Loganathan</h3>
+                    <p>I am a sophomore at Vellore Institute of Technology with strong fundamentals in Python and web development. Passionate about the software industry and professional development.</p>
+                    <div class="personal-info">
+                        <p><strong>Age:</strong> 18</p>
+                        <p><strong>Phone:</strong> +91 9944193744</p>
+                        <p><strong>Email:</strong> <a href="mailto:pranesh_loganathan@hotmail.com">pranesh_loganathan@hotmail.com</a></p>
+                        <p><strong>Location:</strong> Vellore, India</p>
+                    </div>
+                    <a href="#" class="btn" target="_blank">Resume <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills">
+            <h2 class="section-title"><i class="fas fa-laptop-code"></i> Skills & <span>Abilities</span></h2>
+            <div class="skills-container">
+                <div class="skill-item">
+                    <img src="assets/images/skills/icons8-react-100.png" alt="ReactJS">
+                    <span>ReactJS</span>
+                </div>
+                <div class="skill-item">
+                    <img src="assets/images/skills/html.png" alt="HTML">
+                    <span>HTML</span>
+                </div>
+                <div class="skill-item">
+                    <img src="assets/images/skills/javascript.png" alt="JavaScript">
+                    <span>JavaScript</span>
+                </div>
+                <div class="skill-item">
+                    <img src="assets/images/skills/java.png" alt="Java">
+                    <span>Java</span>
+                </div>
+                <div class="skill-item">
+                    <img src="assets/images/skills/python.png" alt="Python">
+                    <span>Python</span>
+                </div>
+                <div class="skill-item">
+                    <img src="assets/images/skills/github.png" alt="GitHub">
+                    <span>GitHub</span>
+                </div>
+                <div class="skill-item">
+                    <img src="assets/images/skills/nodejs.png" alt="NodeJS">
+                    <span>NodeJS</span>
+                </div>
+                <div class="skill-item">
+                    <img src="assets/images/skills/sql.png" alt="SQL">
+                    <span>SQL</span>
+                </div>
+                <div class="skill-item">
+                    <img src="assets/images/skills/php.png" alt="PHP">
+                    <span>PHP</span>
+                </div>
+                <div class="skill-item">
+                    <img src="assets/images/skills/C++.png" alt="C++">
+                    <span>C++</span>
+                </div>
+                <div class="skill-item">
+                    <img src="assets/images/skills/C.png" alt="C">
+                    <span>C</span>
+                </div>
+                <div class="skill-item">
+                    <img src="assets/images/skills/css.png" alt="CSS">
+                    <span>CSS</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="education">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> My <span>Education</span></h2>
+            <div class="education-container">
+                <div class="education-item">
+                    <img src="assets/images/educat/vit.jpg" alt="VIT">
+                    <div class="education-info">
+                        <h3>M.Tech(Integrated) Software Engineering</h3>
+                        <p>Vellore Institute of Technology</p>
+                        <p>2023-2028 | Pursuing</p>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <img src="assets/images/educat/school.jpg" alt="Shrishti Schools">
+                    <div class="education-info">
+                        <h3>Higher Secondary School</h3>
+                        <br>
+                        <p>Shrishti Schools</p>
+                        <p>2021-2023 | Completed</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <h2 class="section-title"><i class="fas fa-laptop-code"></i> Projects <span>Made</span></h2>
+            <div class="projects-container">
+                <div class="project-item">
+                    <img src="assets/images/projects/Portfolio.png" alt="Portfolio Website">
+                    <div class="project-info">
+                        <h3>Portfolio Website</h3>
+                        <p>Personal portfolio website. Don't need much info about it, just scroll down. You're here only!</p>
+                        <div class="project-links">
+                            <center>
+                            <a href="#" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <img src="assets/images/projects/url.png" alt="URL Shortener">
+                    <div class="project-info">
+                        <h3>URL Shortener</h3>
+                        <p>The URL Shortener is a Flask-based web application that transforms long URLs into concise, manageable links.</p>
+                        <div class="project-links">
+                        <center>
+                            <a href="https://github.com/pranesh-loganathan/URL-Shortener.git" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
+                        </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <img src="assets/images/projects/web.png" alt="Web Scraping">
+                    <div class="project-info">
+                        <h3>Web Scraping</h3>
+                        <p>The Web Scraping using python that demonstrates  data extraction capabilities.</p>
+                        <div class="project-links">
+                            <center>
+                            <a href="https://github.com/pranesh-loganathan/WebScraping.git" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Pranesh's Portfolio</h3>
+                <p>Thank you for visiting my personal portfolio website. Connect with me over socials. <br> Keep Rising 🚀. Connect with me over live chat!</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-chevron-circle-right"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-circle-right"></i> About</a></li>
+                    <li><a href="#skills"><i class="fas fa-chevron-circle-right"></i> Skills</a></li>
+                    <li><a href="#education"><i class="fas fa-chevron-circle-right"></i> Education</a></li>
+                    <li><a href="#projects"><i class="fas fa-chevron-circle-right"></i> Projects</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone"></i> +91 9944193744</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:pranesh_loganathan@hotmail.com">pranesh_loganathan@hotmail.com</a></p>
+                <p><i class="fas fa-map-marked-alt"></i> Vellore, India</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/pranesh-loganathan/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/pranesh-loganathan" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; Designed & Developed by Pranesh</p>
+        </div>
+    </footer>
+
+    <a href="#home" class="scroll-top-btn" id="scroll-top" aria-label="Scroll to top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script>
+        // Typing animation
+        const typed = new Typed('#typing-text', {
+            strings: ['Web Development', 'Python', 'Software Engineering'],
+            typeSpeed: 100,
+            backSpeed: 50,
+            loop: true
+        });
+
+// Mobile menu toggle
+        const mobileMenu = document.querySelector('#mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+// Close mobile menu when clicking a nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+// Scroll to top button
+        const scrollTopBtn = document.querySelector('#scroll-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+// Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
