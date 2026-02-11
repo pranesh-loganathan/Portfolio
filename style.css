@@ -2,7 +2,7 @@
     --primary: #6366f1;
     --primary-glow: rgba(99, 102, 241, 0.4);
     --secondary: #a855f7;
-    --bg-dark: #020617; /* Deeper midnight blue */
+    --bg-dark: #020617;
     --surface: #0f172a;
     --card-bg: rgba(30, 41, 59, 0.5);
     --text-main: #f8fafc;
@@ -11,7 +11,7 @@
     --nav-height: 80px;
 }
 
-/* Custom Scrollbar */
+
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--bg-dark); }
 ::-webkit-scrollbar-thumb { 
@@ -34,7 +34,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Animated Background Glows */
+
 body::before {
     content: "";
     position: fixed;
@@ -45,7 +45,7 @@ body::before {
     z-index: -1;
 }
 
-/* --- Navigation --- */
+
 .navbar {
     position: fixed;
     top: 0;
@@ -81,7 +81,7 @@ body::before {
 
 .nav-link:hover { color: var(--text-main); text-shadow: 0 0 10px var(--primary-glow); }
 
-/* --- Hero Section --- */
+
 .hero {
     height: 100vh;
     display: flex;
@@ -113,7 +113,7 @@ body::before {
     margin-bottom: 2.5rem; 
 }
 
-/* --- Cards & Containers --- */
+
 section { padding: 120px 10%; }
 
 .section-title { 
@@ -145,7 +145,7 @@ section { padding: 120px 10%; }
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px var(--primary-glow);
 }
 
-/* --- Specific Components --- */
+
 .pub-tag {
     display: inline-block;
     background: linear-gradient(90deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
@@ -198,9 +198,10 @@ section { padding: 120px 10%; }
     transform: translateY(-2px);
 }
 
-/* --- Responsive Layout --- */
+
 @media (max-width: 768px) {
     section { padding: 80px 5%; }
     .hero h1 { font-size: 3rem; }
     .navbar { padding: 0 5%; }
 }
+
