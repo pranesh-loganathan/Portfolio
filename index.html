@@ -7,7 +7,6 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
@@ -18,7 +17,6 @@
             --secondary: #a855f7;
             --text-main: #ffffff;
             --text-dim: #94a3b8;
-            --glass: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.08);
         }
 
@@ -34,20 +32,8 @@
             background-color: var(--bg);
             color: var(--text-main);
             overflow-x: hidden;
-            line-height: 1.6;
         }
 
-        
-        .blob {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, rgba(5, 7, 10, 0) 70%);
-            z-index: -1;
-            filter: blur(40px);
-        }
-
-        
         nav {
             position: fixed;
             top: 0;
@@ -62,12 +48,22 @@
             z-index: 1000;
         }
 
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
-        .nav-links { display: flex; gap: 30px; list-style: none; }
-        .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
-        .nav-links a:hover { color: var(--primary); }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
 
-    
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
         .hero {
             height: 100vh;
             display: flex;
@@ -78,43 +74,24 @@
             padding: 0 10%;
         }
 
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
-        .hero h1 span { background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 600px; margin-bottom: 40px; }
-
-    
-        section { padding: 100px 10%; }
-        .section-header { margin-bottom: 60px; }
-        .section-header h2 { font-size: 2.5rem; }
-        .accent-line { width: 50px; height: 4px; background: var(--primary); border-radius: 2px; margin-top: 10px; }
-
-    
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .card {
-            background: var(--surface);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 20px;
         }
-        .card:hover { transform: translateY(-10px); border-color: var(--primary); }
 
-    
-        .skill-list { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
-        .skill-badge {
-            background: var(--surface);
-            padding: 12px 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.3s;
+        .hero h1 span {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .skill-badge:hover { background: var(--primary); color: white; border-color: var(--primary); }
-        .skill-badge img { width: 24px; height: 24px; object-fit: contain; }
 
-    
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-bottom: 40px;
+        }
+
         .btn {
             padding: 12px 30px;
             background: var(--primary);
@@ -122,144 +99,65 @@
             border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
-            display: inline-block;
             transition: 0.3s;
         }
-        .btn:hover { box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3); transform: scale(1.05); }
 
-        footer { text-align: center; padding: 60px 10%; border-top: 1px solid var(--border); color: var(--text-dim); }
+        .btn:hover {
+            transform: scale(1.05);
+        }
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2.5rem; }
+        footer {
+            text-align: center;
+            padding: 60px 10%;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
         }
     </style>
 </head>
 <body>
 
-    <div class="blob" style="top: 10%; right: 0;"></div>
-    <div class="blob" style="bottom: 10%; left: 0;"></div>
+<nav>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+    </ul>
+</nav>
 
-    <nav>
-    
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#research">Research</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-        </ul>
-    </nav>
+<header class="hero">
+    <div data-aos="fade-up">
+        <h1>Hi, I'm <span>Pranesh Loganathan</span></h1>
+        <p><span id="typing-text"></span></p>
+        <div style="display: flex; gap: 15px; justify-content: center;">
+            <a href="#projects" class="btn">View My Work</a>
+            <a href="https://github.com/pranesh-loganathan" target="_blank" class="btn" style="background: transparent; border: 1px solid var(--border);">GitHub</a>
+        </div>
+    </div>
+</header>
 
-    <header class="hero">
-        <div data-aos="fade-up">
-            <h1>Hi, I'm <span>Pranesh Loganathan</span></h1>
-            <p><span id="typing-text"></span></p>
-            <div style="display: flex; gap: 15px; justify-content: center;">
-                <a href="#projects" class="btn">View My Work</a>
-                <a href="https://github.com/pranesh-loganathan" target="_blank" class="btn" style="background: transparent; border: 1px solid var(--border);">GitHub</a>
-            </div>
-        </div>
-    </header>
+<footer>
+    <p>© 2026 Pranesh Loganathan | Designed & Developed with Passion</p>
+</footer>
 
-    <section id="about">
-        <div class="grid">
-            <div data-aos="fade-right">
-                <div class="section-header">
-                    <h2>01. About <span>Me</span></h2>
-                    <div class="accent-line"></div>
-                </div>
-                <p style="color: var(--text-dim); font-size: 1.1rem;">
-                    I am a <strong>Third-Year Software Engineering student</strong> at VIT Vellore. I specialize in backend architecture, AI-driven optimization, and exploring decentralized technologies.
-                </p>
-                <br>
-                <p><i class="fas fa-envelope" style="color: var(--primary);"></i> pranesh_loganathan@hotmail.com</p>
-                <p><i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> Vellore, India</p>
-            </div>
-            <div class="card" data-aos="fade-left">
-                <h3>Technical Focus</h3>
-                <p style="color: var(--text-dim);">Passionate about software quality, functional testing using Playwright and UFT, and building scalable full-stack applications with Flask.</p>
-            </div>
-        </div>
-    </section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <section id="research" style="background: #0a0f1d;">
-        <div class="section-header">
-            <h2 style="text-align: center;">02. Research & <span>Publication</span></h2>
-            <div class="accent-line" style="margin: 10px auto;"></div>
-        </div>
-        <div class="card" data-aos="zoom-in" style="max-width: 900px; margin: 0 auto; border-color: var(--primary);">
-            <div style="color: var(--primary); font-weight: 800; font-size: 0.8rem; margin-bottom: 10px; letter-spacing: 1px;">WILEY PUBLICATION (JUNE 2024)</div>
-            <h3>Blockchain and Automated Machine Learning-Based Advancements for Banking and Financial Sectors</h3>
-            <p style="color: var(--text-dim); margin-top: 15px;">Book chapter exploring how AutoML and Blockchain integration can secure and optimize global financial transactions.</p>
-            <br>
-            <a href="https://onlinelibrary.wiley.com/" target="_blank" style="color: var(--primary); font-weight: 600; text-decoration: none;">Read Chapter <i class="fas fa-external-link-alt"></i></a>
-        </div>
-    </section>
+<script>
+    AOS.init({ duration: 1000, once: true });
 
-    <section id="skills">
-        <div class="section-header">
-            <h2 style="text-align: center;">03. Technical <span>Skills</span></h2>
-            <div class="accent-line" style="margin: 10px auto;"></div>
-        </div>
-        <div class="skill-list" data-aos="fade-up">
-            <div class="skill-badge"><img src="python.png"> Python</div>
-            <div class="skill-badge"><img src="java.png"> Java</div>
-            <div class="skill-badge"><img src="ReactJS.png"> ReactJS</div>
-            <div class="skill-badge"><img src="C++.png"> C++</div>
-            <div class="skill-badge"><img src="TailwindCSS.png"> Tailwind</div>
-            <div class="skill-badge"><img src="javascript.png"> JavaScript</div>
-            <div class="skill-badge"><img src="sql.png"> SQL</div>
-            <div class="skill-badge"><img src="mongodb.png"> MongoDB</div>
-            <div class="skill-badge"><img src="nodejs.png"> NodeJS</div>
-        </div>
-    </section>
+    new Typed('#typing-text', {
+        strings: [
+            '3rd Year Software Engineering Student',
+            'Full-Stack Developer',
+            'AI & Optimization Researcher'
+        ],
+        typeSpeed: 60,
+        backSpeed: 40,
+        backDelay: 1500,
+        loop: true
+    });
+</script>
 
-    <section id="projects">
-        <div class="section-header">
-            <h2>04. Featured <span>Projects</span></h2>
-            <div class="accent-line"></div>
-        </div>
-        <div class="grid">
-            <div class="card" data-aos="fade-up">
-                <h3>URL Shortener</h3>
-                <p style="color: var(--text-dim);">A high-performance Flask-based tool for link management and custom analytics.</p>
-                <br>
-                <a href="https://github.com/pranesh-loganathan/URL-Shortener.git" class="nav-link" style="color: var(--primary);">Source Code <i class="fab fa-github"></i></a>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <h3>Web Scraping Engine</h3>
-                <p style="color: var(--text-dim);">Automated Python tool for extracting structured data from complex financial web sources.</p>
-                <br>
-                <a href="https://github.com/pranesh-loganathan/WebScraping.git" class="nav-link" style="color: var(--primary);">Source Code <i class="fab fa-github"></i></a>
-            </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <h3>E-Commerce Fullstack</h3>
-                <p style="color: var(--text-dim);">An online shopping platform built using Python and Flask with integrated database support.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2026 Pranesh Loganathan | Designed & Developed with Passion</p>
-        <div style="margin-top: 20px;">
-            <a href="https://www.linkedin.com/in/pranesh-loganathan/" target="_blank" style="color: var(--text-dim); margin: 0 10px; font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/pranesh-loganathan" target="_blank" style="color: var(--text-dim); margin: 0 10px; font-size: 1.2rem;"><i class="fab fa-github"></i></a>
-        </div>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1000, once: true });
-
-        new Typed('#typing-text', {
-            strings: ['3rd Year Software Engineering Student', 'Full-Stack Developer', 'AI Researche'],
-            typeSpeed: 60,
-            backSpeed: 40,
-            loop: true
-        }); give me good strings thing like 3rd year software studnet full stack develeoper
-    </script>
 </body>
 </html>
-
-
