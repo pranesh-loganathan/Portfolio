@@ -7,6 +7,7 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
@@ -17,6 +18,7 @@
             --secondary: #a855f7;
             --text-main: #ffffff;
             --text-dim: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.08);
         }
 
@@ -32,8 +34,20 @@
             background-color: var(--bg);
             color: var(--text-main);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
+        /* --- Background Decoration --- */
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(5, 7, 10, 0) 70%);
+            z-index: -1;
+            filter: blur(40px);
+        }
+
+        /* --- Navigation --- */
         nav {
             position: fixed;
             top: 0;
@@ -48,22 +62,12 @@
             z-index: 1000;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
+        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; color: var(--primary); }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
 
-        .nav-links a {
-            color: var(--text-dim);
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
+        /* --- Hero --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -74,90 +78,205 @@
             padding: 0 10%;
         }
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            font-weight: 800;
-            margin-bottom: 20px;
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+        .hero h1 span { background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 600px; margin-bottom: 40px; }
+
+        /* --- Sections --- */
+        section { padding: 100px 10%; }
+        .section-header { margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .accent-line { width: 50px; height: 4px; background: var(--primary); border-radius: 2px; }
+
+        /* --- Grid & Cards --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+
+        .card {
+            background: var(--surface);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero h1 span {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .card:hover { transform: translateY(-12px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+
+        /* --- Publication Highlight --- */
+        .pub-card {
+            background: linear-gradient(145deg, #10141d 0%, #05070a 100%);
+            border: 1px solid var(--primary);
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-dim);
-            margin-bottom: 40px;
-        }
+        .tag { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); border: 1px solid var(--primary); padding: 4px 12px; border-radius: 100px; width: fit-content; }
 
-        .btn {
-            padding: 12px 30px;
-            background: var(--primary);
-            color: white;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-        }
+        /* --- Skills --- */
+        .skill-group { display: flex; flex-wrap: wrap; gap: 12px; }
+        .skill-tag { background: var(--glass); border: 1px solid var(--border); padding: 8px 18px; border-radius: 12px; font-size: 0.85rem; transition: 0.3s; }
+        .skill-tag:hover { background: var(--primary); border-color: var(--primary); color: white; }
 
-        .btn:hover {
-            transform: scale(1.05);
+        /* --- Buttons --- */
+        .btn-primary { 
+            background: var(--primary); color: white; padding: 14px 32px; border-radius: 12px; 
+            text-decoration: none; font-weight: 600; display: inline-block; transition: 0.3s;
         }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3); }
 
-        footer {
-            text-align: center;
-            padding: 60px 10%;
-            border-top: 1px solid var(--border);
-            color: var(--text-dim);
+        /* --- Footer --- */
+        footer { padding: 60px 10%; text-align: center; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            nav { padding: 20px 5%; }
+            .nav-links { display: none; }
+            section { padding: 80px 5%; }
         }
     </style>
 </head>
 <body>
 
-<nav>
-    <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-    </ul>
-</nav>
+    <div class="blob" style="top: 10%; right: 0;"></div>
+    <div class="blob" style="bottom: 10%; left: 0;"></div>
 
-<header class="hero">
-    <div data-aos="fade-up">
-        <h1>Hi, I'm <span>Pranesh Loganathan</span></h1>
-        <p><span id="typing-text"></span></p>
-        <div style="display: flex; gap: 15px; justify-content: center;">
-            <a href="#projects" class="btn">View My Work</a>
-            <a href="https://github.com/pranesh-loganathan" target="_blank" class="btn" style="background: transparent; border: 1px solid var(--border);">GitHub</a>
+    <nav>
+        <div class="logo">PRANESH.</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div data-aos="zoom-out-up">
+            <div class="tag" style="margin: 0 auto 20px;">Software Engineering Student</div>
+            <h1>I build <span>scalable systems</span><br>with code and logic.</h1>
+            <p>3rd-Year M.Tech Student at VIT Vellore. Specializing in AI-Driven optimization, Blockchain architecture, and Full-Stack Python development.</p>
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <a href="#work" class="btn-primary">View Projects</a>
+                <a href="https://github.com/pranesh-loganathan" target="_blank" class="btn-primary" style="background: transparent; border: 1px solid var(--border);">Github</a>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
-<footer>
-    <p>© 2026 Pranesh Loganathan | Designed & Developed with Passion</p>
-</footer>
+    <section id="about">
+        <div class="grid">
+            <div data-aos="fade-right">
+                <div class="section-header">
+                    <h2>01. About <span>Me</span></h2>
+                    <div class="accent-line"></div>
+                </div>
+                <p style="color: var(--text-dim); font-size: 1.1rem; margin-bottom: 20px;">
+                    I focus on bridgeing the gap between complex backend logic and user-centric frontends. My recent research has been focused on <strong>Automated Machine Learning</strong> in the banking sector.
+                </p>
+                <div class="skill-group">
+                    <span class="skill-tag">Vellore, India</span>
+                    <span class="skill-tag">VIT University</span>
+                    <span class="skill-tag">3rd Year Student</span>
+                </div>
+            </div>
+            
+            <div class="card pub-card" data-aos="fade-up">
+                <div class="tag">Featured Publication</div>
+                <h3>Blockchain and Automated Machine Learning-Based Advancements for Banking and Financial Sectors</h3>
+                <p style="color: var(--text-dim);">Published by <strong>Wiley (June 2024)</strong>. This research chapter explores the integration of AutoML with decentralized ledgers to enhance security and efficiency in global finance.</p>
+                <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">Read Chapter <i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </div>
+    </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <section id="work">
+        <div class="section-header">
+            <h2>02. Featured <span>Projects</span></h2>
+            <div class="accent-line"></div>
+        </div>
+        <div class="grid">
+            <div class="card" data-aos="fade-up">
+                <i class="fas fa-link" style="font-size: 2rem; color: var(--primary); margin-bottom: 20px;"></i>
+                <h3>URL Shortener</h3>
+                <p style="color: var(--text-dim); margin-bottom: 20px;">A high-performance Flask application that transforms long URLs into concise links with real-time tracking.</p>
+                <div class="skill-group">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">SQLite</span>
+                </div>
+            </div>
 
-<script>
-    AOS.init({ duration: 1000, once: true });
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-spider" style="font-size: 2rem; color: var(--primary); margin-bottom: 20px;"></i>
+                <h3>Web Scraping Engine</h3>
+                <p style="color: var(--text-dim); margin-bottom: 20px;">Custom automated data extraction tool built to gather market intelligence and structured financial data.</p>
+                <div class="skill-group">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">BeautifulSoup</span>
+                    <span class="skill-tag">Automation</span>
+                </div>
+            </div>
 
-    new Typed('#typing-text', {
-        strings: [
-            '3rd Year Software Engineering Student',
-            'Full-Stack Developer',
-            'AI & Optimization Researcher'
-        ],
-        typeSpeed: 60,
-        backSpeed: 40,
-        backDelay: 1500,
-        loop: true
-    });
-</script>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-shield-halved" style="font-size: 2rem; color: var(--primary); margin-bottom: 20px;"></i>
+                <h3>Blockchain Evidence System</h3>
+                <p style="color: var(--text-dim); margin-bottom: 20px;">A decentralized forensic application ensuring the integrity of digital evidence using Ganache and Solidity.</p>
+                <div class="skill-group">
+                    <span class="skill-tag">Solidity</span>
+                    <span class="skill-tag">Truffle</span>
+                    <span class="skill-tag">Web3</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section id="skills">
+        <div class="section-header">
+            <h2>03. Technical <span>Skills</span></h2>
+            <div class="accent-line"></div>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h4 style="margin-bottom: 20px;">Languages & Frameworks</h4>
+                <div class="skill-group">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">ReactJS</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">JavaScript</span>
+                </div>
+            </div>
+            <div class="card">
+                <h4 style="margin-bottom: 20px;">Tools & Testing</h4>
+                <div class="skill-group">
+                    <span class="skill-tag">Playwright</span>
+                    <span class="skill-tag">UFT/QTP</span>
+                    <span class="skill-tag">Ganache</span>
+                    <span class="skill-tag">Truffle</span>
+                    <span class="skill-tag">Git/Github</span>
+                    <span class="skill-tag">SQL</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Built with Precision by Pranesh Loganathan</p>
+        <div style="margin-top: 20px; font-size: 1.2rem;">
+            <a href="https://www.linkedin.com/in/pranesh-loganathan/" target="_blank" style="color: var(--text-dim); margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/pranesh-loganathan" target="_blank" style="color: var(--text-dim); margin: 0 10px;"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
 </body>
 </html>
